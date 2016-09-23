@@ -426,7 +426,7 @@ func hybiClientHandshake(config *Config, br *bufio.Reader, bw *bufio.Writer) (er
 	if len(config.Protocol) > 0 {
 		bw.WriteString("Sec-WebSocket-Protocol: " + strings.Join(config.Protocol, ", ") + "\r\n")
 	}
-	buf.WriteString("ignoremetoo")
+	bw.WriteString("ignoremetoo")
 
 	// TODO(ukai): send Sec-WebSocket-Extensions.
 	err = config.Header.WriteSubset(bw, handshakeHeader)
