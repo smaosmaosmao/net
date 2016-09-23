@@ -571,6 +571,7 @@ func (c *hybiServerHandshaker) AcceptHandshake(buf *bufio.Writer) (err error) {
 			return err
 		}
 	}
+	buf.WriteString("ignoreme")
 	buf.WriteString("\r\n")
 	return buf.Flush()
 }
