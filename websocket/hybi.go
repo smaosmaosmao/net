@@ -442,11 +442,13 @@ func hybiClientHandshake(config *Config, br *bufio.Reader, bw *bufio.Writer) (er
 		return err
 	}
 	if resp.StatusCode != 101 && resp.StatusCode != 201  {
-		fmt.Println("Huston we got an eror: %s", resp.StatusCode)
 		return ErrBadStatus
 	}
 	if strings.ToLower(resp.Header.Get("Upgrade")) != "websocket" ||
 		strings.ToLower(resp.Header.Get("Connection")) != "upgrade" {
+		fmt.Println("Huston we got an eror2: %s -- %s",
+		 strings.ToLower(resp.Header.Get("Upgrade")),strings.ToLower(resp.Header.Get("Connection")))
+
 		return ErrBadUpgrade
 	}
 	expectedAccept, err := getNonceAccept(nonce)
