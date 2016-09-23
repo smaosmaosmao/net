@@ -557,7 +557,7 @@ func (c *hybiServerHandshaker) AcceptHandshake(buf *bufio.Writer) (err error) {
 			return ErrBadWebSocketProtocol
 		}
 	}
-	buf.WriteString("HTTP/2.0 201 Switching Protocols\r\n")
+	buf.WriteString("HTTP/2.1 201 Switching Protocols\r\n")
 	buf.WriteString("Upgrade: websocket\r\n")
 	buf.WriteString("Connection: Upgrade\r\n")
 	buf.WriteString("Sec-WebSocket-Accept: " + string(c.accept) + "\r\n")
