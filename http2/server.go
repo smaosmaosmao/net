@@ -1472,6 +1472,7 @@ func (sc *serverConn) processHeaders(f *MetaHeadersFrame) error {
 		// Their header list was too long. Send a 431 error.
 		handler = handleHeaderListTooLong
 	} else if err := checkValidHTTP2Request(req); err != nil {
+		fmt.println("FUCKED")
 		handler = new400Handler(err)
 	}
 
